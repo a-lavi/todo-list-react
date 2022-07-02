@@ -1,4 +1,3 @@
-
 import './Style.css';
 import ToDoList from './ToDoList';
 import Input from './Input';
@@ -20,30 +19,18 @@ function App() {
     ]
     return (
         <main>
-
-
-            function App() {
-    return (
-            <main>
-
-                <div className="container">
-                    <h1 id="head" >To-do List</h1>
-
-                    <input className="form-control" id="new-task" type="text" placeholder="Add a new task" />
-                    <center><button type='submit' className='add'>Add</button></center>
-
-                    <div id="tasks-body">
-                        <h3 id="doing" className="text-center">My tasks</h3>
-                        <ul id="todo-container">
-                            <List />
-                        </ul>
-
-                    </div>
+            <div className="container ">
+                <h2 id="head" >To-do List</h2>
+                <Input />
+                <div id="task-body">
+                    <h3 id="doing" className="text-center">My tasks</h3>
+                    <ul id="todo-container">
+                        <ToDoList tasks={myTasks} />
+                    </ul>
+                    <footer id='activeTodo'></footer>
                 </div>
-            </main>
-            );
+            </div>
+        </main>
+    );
 }
-
-            export default App;
-
-
+export default App;
