@@ -5,29 +5,37 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
 import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined';
 
-
-
-const ToDoList = ({ tasks }) => {
-    const allTasks = tasks.map((task, index) => {
-        return (
-            <li className="todoItem" key={'mein' + task.id}>
-                <div></div>
-                <input type="checkbox" className="checkBox" />
-                <label>{task.description}</label>
-                <input type="text" className="form-control" />
-                <Button className="delete"><CloseOutlinedIcon /></Button>
+const ToDoList = ({ taskList, setTaskList  }) => {
+  const removeTask = (props) => {
+    console.log(props,'cheCK', taskList)
+    setTaskList(taskList => taskList.filter((list,index) => index !== props))
+  }
+    const allTasks = taskList.map((list, index) => {
+     
+      return (
+        <li className="todoItem" key={'mein' + index}>
+          <div>{list.task}</div>
+          <input type="checkbox" className="checkBox" />
+          <label></label>
+          <input type="text" className="form-control" />
+          <div>
+          <Button className="delete"
+           onClick={() => removeTask(index)} 
+           ><CloseOutlinedIcon /></Button>
+          </div>
                 <Button className="edit"><CreateOutlinedIcon /></Button>
                 <Button className="down"><ArrowDownwardOutlinedIcon /></Button>
                 <Button className="up"><ArrowUpwardOutlinedIcon /></Button>
-            </li>
-        )
+        </li>
+      )
 
     })
     return (
-        <>
-            {allTasks}
-        </>
+      <>
+        {allTasks}
+      </>
     )
-}
+  }
 
-export default ToDoList
+  export default ToDoList
+
