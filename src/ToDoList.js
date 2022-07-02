@@ -1,11 +1,12 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 const ToDoList = ({ taskList, setTaskList  }) => {
-  
+  const removeTask = (props) => {
+    console.log(props,'cheCK', taskList)
+    setTaskList(taskList => taskList.filter((list,index) => index !== props))
+  }
     const allTasks = taskList.map((list, index) => {
-      const removeTask = (props) => {
-        setTaskList(prev => prev.filter((index) => index !== props))
-      }
+     
       return (
         <li className="todoItem" key={'mein' + index}>
           <div>{list.task}</div>
