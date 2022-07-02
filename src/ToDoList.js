@@ -14,8 +14,8 @@ const ToDoList = ({ taskList, setTaskList  }) => {
           <input type="text" className="form-control" />
           <div>
           <Button variant="contained" className="delete"
-           onClick={() => removeTask(index)} key={index} 
-           >{list}</Button>
+           onClick={() => removeTask(index)} 
+           ></Button>
           </div>
           <button className="edit"></button>
           <button className="down"></button>
