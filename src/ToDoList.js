@@ -1,5 +1,10 @@
 import React from 'react'
 import Button from '@mui/material/Button';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
+import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined';
+
 const ToDoList = ({ taskList, setTaskList  }) => {
   const removeTask = (props) => {
     console.log(props,'cheCK', taskList)
@@ -14,13 +19,13 @@ const ToDoList = ({ taskList, setTaskList  }) => {
           <label></label>
           <input type="text" className="form-control" />
           <div>
-          <Button variant="contained" className="delete"
+          <Button className="delete"
            onClick={() => removeTask(index)} 
-           ></Button>
+           ><CloseOutlinedIcon /></Button>
           </div>
-          <button className="edit"></button>
-          <button className="down"></button>
-          <button className="up"></button>
+                <Button className="edit"><CreateOutlinedIcon /></Button>
+                <Button className="down"><ArrowDownwardOutlinedIcon /></Button>
+                <Button className="up"><ArrowUpwardOutlinedIcon /></Button>
         </li>
       )
 
@@ -33,3 +38,4 @@ const ToDoList = ({ taskList, setTaskList  }) => {
   }
 
   export default ToDoList
+

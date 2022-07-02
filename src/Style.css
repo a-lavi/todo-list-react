@@ -197,25 +197,6 @@ button:disabled {
 
 
 
-.delete:after {
-    font-family: "Material Icons";
-    content: "\E888";
-}
-
-.edit:after {
-    font-family: "Material Icons";
-    content: "\E150";
-}
-
-.up:after {
-    font-family: "Material Icons";
-    content: "\E5D8";
-}
-
-.down:after {
-    font-family: "Material Icons";
-    content: "\E5DB";
-}
 
 #tasks-body li button:disabled {
     opacity: 0.5;

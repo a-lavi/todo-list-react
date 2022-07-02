@@ -1,4 +1,3 @@
-
 import './Style.css';
 import ToDoList from './ToDoList';
 import Input from './Input';
@@ -7,6 +6,7 @@ import React, { useState } from 'react';
 
 
 function App() {
+
   
   
     const[newTask, setNewTask] = useState({task:'', status:''});
@@ -27,10 +27,9 @@ function App() {
                   <ToDoList taskList={taskList} setTaskList={setTaskList}/>
                 </ul>
                 <footer id='activeTodo'></footer>
-            </div>
-        </div>
-    </main>
-  );
-}
 
+            </div>
+        </main>
+    );
+}
 export default App;
