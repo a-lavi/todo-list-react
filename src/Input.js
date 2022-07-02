@@ -1,4 +1,4 @@
-import App.css 
+
 function Input() {
   
     return (

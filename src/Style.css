@@ -1,7 +1,14 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+
 body {
     background-color: #ecebebd0;
     font-family: 'Open Sans', sans-serif;
+
 }
+
 
 .container {
     display: block;
@@ -13,19 +20,23 @@ body {
     animation: grow 1s;
 }
 
-h2 {
-    color: #b3b3ff;
-    font-weight: bolder;
-}
 
 #head {
     margin-top: 15px;
+    text-align: center;
+    color: #b3b3ff;
+    font-weight: 900px;
+    line-height: 3rem;
 }
 
-.foot {
-    font-weight: 500;
-    font-size: 1.5rem;
+.form-control {
+    display: block;
+    width: 370px;
+    margin: 0 auto;
+    padding:10px 20px;
+
 }
+
 
 #completed-tasks {
     margin-bottom: 25px;
@@ -52,7 +63,7 @@ button {
     outline: none;
 }
 
-button {
+li>button  {
     background: none;
     border: 0;
     color: #888;
@@ -65,11 +76,12 @@ button {
     outline: none;
 }
 
+
 button:focus {
     outline: 0;
 }
 
-button:hover {
+li>button:hover {
     color: #2f2f1e;
     transform: scale(1.4);
 }
@@ -88,9 +100,7 @@ input[type="text"]:focus {
     color: #333;
 }
 
-footer {
-    margin-top: 30px;
-}
+
 
 input[type="text"] {
     margin-bottom: 25px;
@@ -150,67 +160,22 @@ ul li.editMode label {
     display: none;
 }
 
-#newColor ul li {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 50px 0 rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    margin: 30px 5px;
-    padding: 0;
-    transition: transform 0.2s;
-    animation: grow 1s 1s ease-out backwards;
-}
+
 
 .selected {
     border: 2px solid rgb(255, 255, 255);
 }
 
-.firstColor {
-    background-color: #ffb3b3;
-}
-
-.firstColor:hover {
-    transform: scale(1.1);
-}
-
-.secondColor {
-    background-color: #f09c58;
-}
-
-.secondColor:hover {
-    transform: scale(1.1);
-}
-
-.thirdColor {
-    background-color: #94b8b8;
-}
-
-.thirdColor:hover {
-    transform: scale(1.1);
-}
-
-.forthColor {
-    background-color: #8c8cfc;
-}
-
-.firstColor:hover {
-    transform: scale(1.1);
-}
 
 .todoItem {
     transition: transform 0.3s;
 }
 
 .todoItem:hover {
-    transform: scale(1.04);
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 50px 0 rgba(0, 0, 0, 0.2);
 }
 
-#tasks-body {
-    display: none;
-}
+
 
 @keyframes grow {
     0% {
@@ -229,15 +194,7 @@ button:disabled {
     color: gray;
 }
 
-#todo-count,
-footer {
-    opacity: 0.7;
-    margin-bottom: 10px;
-}
 
-#todoCounter {
-    margin-bottom: 25px;
-}
 
 .delete:after {
     font-family: "Material Icons";
