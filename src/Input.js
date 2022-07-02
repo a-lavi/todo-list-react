@@ -1,10 +1,11 @@
 
-function Input() {
-  
+
+function Input({setNewTask, addList, newTask}){
+
     return (
         <div>
-            <input className="form-control" id="new-task" type="text" placeholder="Add a new task" />
-                <center><button type='submit' className='add'>Add</button></center>
+            <input value={newTask.task} className="form-control" id="new-task" type="text" placeholder="Add a new task" onChange={({ target }) => setNewTask(prev => ({ ...prev, task: target.value }))}  />
+                <center><button onClick={addList} type='submit' className='add'>Add</button></center>
             </div>
     )
 

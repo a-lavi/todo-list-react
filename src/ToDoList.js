@@ -1,26 +1,35 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-const ToDoList = ({ tasks }) => {
-  const allTasks = tasks.map((task, index) => {
+const ToDoList = ({ taskList, setTaskList  }) => {
+  const removeTask = (props) => {
+    console.log(props,'cheCK', taskList)
+    setTaskList(taskList => taskList.filter((list,index) => index !== props))
+  }
+    const allTasks = taskList.map((list, index) => {
+     
+      return (
+        <li className="todoItem" key={'mein' + index}>
+          <div>{list.task}</div>
+          <input type="checkbox" className="checkBox" />
+          <label></label>
+          <input type="text" className="form-control" />
+          <div>
+          <Button variant="contained" className="delete"
+           onClick={() => removeTask(index)} 
+           ></Button>
+          </div>
+          <button className="edit"></button>
+          <button className="down"></button>
+          <button className="up"></button>
+        </li>
+      )
+
+    })
     return (
-      <li className="todoItem" key = {'mein'+task.id}>
-        <div></div>
-        <input type="checkbox" className="checkBox" />
-        <label>{task.description}</label>
-        <input type="text" className="form-control" />
-        <Button variant="contained" className="delete"></Button>
-        <button className="edit"></button>
-        <button className="down"></button>
-        <button className="up"></button>
-      </li>
+      <>
+        {allTasks}
+      </>
     )
+  }
 
-  })
-  return (
-    <>
-      {allTasks}
-    </>
-  )
-}
-
-export default ToDoList
+  export default ToDoList
