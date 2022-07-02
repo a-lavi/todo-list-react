@@ -18,10 +18,10 @@ function App() {
   return (
     <main>
 
-        <div className="container text-muted">
-            <h2 id="head" className="display-3 text-center mb-5">To-do List</h2>
+        <div className="container ">
+            <h2 id="head" >To-do List</h2>
             <Input />
-            <div id="-body">
+            <div id="task-body">
                 <h3 id="doing" className="text-center">My tasks</h3>
                 <ul id="todo-container">
                   <ToDoList tasks={myTasks}/>
