@@ -7,17 +7,10 @@ import React, { useState } from 'react';
 
 
 function App() {
-<<<<<<< Updated upstream
-  
-  
-    const[newTask, setNewTask] = useState({task:'', status:''});
-    const [taskList , setTaskList]= useState([])
-    const addList = ()=>{
-      setTaskList(prev =>([...prev, newTask]));
-=======
 
-  const [newTask, setNewTask] = useState({ task: '', status: '', completed:false });
+  const [newTask, setNewTask] = useState({ task: '', status: '',isEditing:false, completed:false });
   const [taskList, setTaskList] = useState([])
+  //const [editing, setEditing]= useState(false)
   const addList = () => {
     if(!newTask.task){
       console.log('hhhhhhhhh')
@@ -25,7 +18,6 @@ function App() {
       console.log('change')
     }else{
       setTaskList(prev => ([...prev, newTask]));
->>>>>>> Stashed changes
     }
     
   }
@@ -33,31 +25,17 @@ function App() {
   return (
     <main>
 
-<<<<<<< Updated upstream
-        <div className="container ">
-            <h2 id="head" >To-do List</h2>
-            <Input setNewTask={setNewTask} addList={addList} newTask={newTask}/>
-            <div id="task-body">
-                <h3 id="doing" className="text-center">My tasks</h3>
-                <ul id="todo-container">
-                  <ToDoList taskList={taskList} setTaskList={setTaskList}/>
-                </ul>
-                <footer id='activeTodo'></footer>
-            </div>
-        </div>
-=======
       <div className="container ">
         <h2 id="head" >To-do List</h2>
         <Input setNewTask={setNewTask} addList={addList} newTask={newTask} taskList={taskList}  />
         <div id="task-body">
           <h3 id="doing" className="text-center">My tasks</h3>
           <ul id="todo-container">
-            <ToDoList taskList={taskList} setTaskList={setTaskList} />
+            <ToDoList  taskList={taskList} setTaskList={setTaskList} setNewTask={setNewTask} addList={addList} newTask={newTask} />
           </ul>
           <footer id='activeTodo'></footer>
         </div>
       </div>
->>>>>>> Stashed changes
     </main>
   );
 }

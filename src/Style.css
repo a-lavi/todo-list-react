@@ -150,7 +150,7 @@ li>.delete:hover {
 }
 
 ul li input[type=text] {
-    display: none;
+    
 }
 
 ul li.editMode input[type=text] {
