@@ -11,6 +11,7 @@ function App() {
   const [newTask, setNewTask] = useState({ task: '', status: '',isEditing:false, completed:false });
   const [taskList, setTaskList] = useState([])
   //const [editing, setEditing]= useState(false)
+
   const addList = () => {
     if(!newTask.task){
       console.log('hhhhhhhhh')
@@ -18,9 +19,11 @@ function App() {
       console.log('change')
     }else{
       setTaskList(prev => ([...prev, newTask]));
+      
     }
     
   }
+ 
   // console.log(...taskList)
   return (
     <main>
@@ -38,6 +41,7 @@ function App() {
       </div>
     </main>
   );
+  
 }
 
 export default App;

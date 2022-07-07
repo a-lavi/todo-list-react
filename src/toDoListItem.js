@@ -6,31 +6,36 @@ import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined
 import React, { useState } from 'react';
 const ToDoListItem = ({ list, index, taskList, setTaskList, setNewTask, addList, newTask, removeTask }) => {
 
-    const [editing, setEditing]= useState(false)
+    const [editing, setEditing] = useState(false)
+    const [updateTask, setUpdateTask] = useState([])
+const [toggle,setToggle]= useState(false)
 
+    const toggleComplete = () => {
+        console.log(toggle,'inja')
+       
+        setToggle(!toggle)
 
-
-
+    }
     const renderName = ({ list }) => {
         console.log('test!')
         const itemStyle = {
-            'text-decoration': list.completed ? 'line-through' : 'none',
+            'text-decoration': toggle ? 'line-through' : 'none',
             cursor: 'pointer'
         };
 
         if (editing) {
             console.log('i am edit')
             return (
-                    <form onSubmit={onSaveClick}>
-                        <input className='form-control'type="text" id='update-task' value={newTask.task} onChange={({ target }) => setNewTask(prev => ({ ...prev, task: target.value }))} />
-                    </form>
-             
+                <form onSubmit={onSaveClick}>
+                    <input className='form-control' type="text" id='update-task' value={updateTask.task} onChange={({ target }) => setUpdateTask(prev => ({ ...prev, task: target.value }))} />
+                </form>
+
             );
         } else {
             console.log('test2', editing)
             return (
                 <>
-                    <span style={itemStyle} >{list.task}</span>
+                    <span style={itemStyle} onClick={toggleComplete}>{list.task}</span>
                     <input type="checkbox"
                         //onClick={this.props.toggleComplete.bind(this, this.props.name)} 
                         className="checkBox" />
@@ -67,13 +72,12 @@ const ToDoListItem = ({ list, index, taskList, setTaskList, setNewTask, addList,
     }
     const findItem = (item) => {
         return taskList.filter((element) => element.task === item)[0];
-        
+
     }
     const onSaveClick = () => {
-        console.log(newTask.task)
-        console.log(list)
 
-        saveItem(list, newTask.task);
+
+        saveItem(list, updateTask.task);
         setEditing(false)
     }
     const saveItem = (oldItem, newItem) => {
@@ -82,14 +86,15 @@ const ToDoListItem = ({ list, index, taskList, setTaskList, setNewTask, addList,
         //setTaskList(prev => ([...prev, selectedItem]));
     }
     const onEditClick = () => {
-        console.log(editing)
+
         setEditing(true)
         renderName({ list });
-        console.log('editing')
+
     }
-    const onCancel=()=>{
+    const onCancel = () => {
         setEditing(false)
     }
+  
 
     return (
         <div className="to-do-item">
