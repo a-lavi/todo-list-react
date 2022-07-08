@@ -8,11 +8,11 @@ const ToDoListItem = ({ list, index, taskList, setTaskList, setNewTask, addList,
 
     const [editing, setEditing] = useState(false)
     const [updateTask, setUpdateTask] = useState([])
-const [toggle,setToggle]= useState(false)
+    const [toggle, setToggle] = useState(false)
 
     const toggleComplete = () => {
-        console.log(toggle,'inja')
-       
+        
+
         setToggle(!toggle)
 
     }
@@ -94,7 +94,7 @@ const [toggle,setToggle]= useState(false)
     const onCancel = () => {
         setEditing(false)
     }
-  
+
 
     return (
         <div className="to-do-item">
