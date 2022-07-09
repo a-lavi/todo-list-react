@@ -4,6 +4,7 @@ import Input from './Input'
 import React, { useState } from 'react'
 
 function App() {
+  let placeHolder = 'Add a new Task!!'
     const [newTask, setNewTask] = useState({
         task: '',
         status: '',
@@ -11,15 +12,19 @@ function App() {
         completed: false,
     })
     const [taskList, setTaskList] = useState([])
+    const [placeholder , setPlaceHolder] = useState('Add a new Task!!!')
     //const [editing, setEditing]= useState(false)
 
     const addList = () => {
         if (!newTask.task) {
-            console.log('hhhhhhhhh')
+          
+          setPlaceHolder('Please enter a valid Task!!!')
         } else if (
             taskList.map((element) => element.task).indexOf(newTask.task) !== -1
         ) {
             console.log('change')
+            setNewTask((prev)=>({...prev, task:''}))
+            setPlaceHolder('There is already a task with this name!!!')
         } else {
           
             setTaskList((prev) => [...prev, {...newTask}])
@@ -34,6 +39,8 @@ function App() {
             <div className="container ">
                 <h2 id="head">To-do List</h2>
                 <Input
+                placeholder={placeholder}
+                setPlaceHolder={setPlaceHolder}
                     setNewTask={setNewTask}
                     addList={addList}
                     newTask={newTask}
