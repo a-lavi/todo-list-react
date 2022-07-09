@@ -3,7 +3,9 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined'
 import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined'
 import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined'
+import CheckIcon from '@mui/icons-material/Check'
 import React, { useState } from 'react'
+import './Style.css'
 import Popup from './Popup'
 const ToDoListItem = ({
     list,
@@ -54,7 +56,9 @@ const ToDoListItem = ({
                 console.log('deleeeeeteee')
                 return (
                     <>
+
                         <Popup index={index} removeTask={removeTask} popup={popup} setPopup={setPopup} />
+
                     </>
                 )
             } else {
@@ -73,8 +77,12 @@ const ToDoListItem = ({
         if (editing) {
             return (
                 <span>
-                    <button onClick={onSaveClick}>Save</button>
-                    <button onClick={onCancel}>Cancel</button>
+                    <button className="editIcon" onClick={onSaveClick}>
+                        <CheckIcon />
+                    </button>
+                    <button className="editIcon" onClick={onCancel}>
+                        <CloseOutlinedIcon />
+                    </button>
                 </span>
             )
         } else {
@@ -82,7 +90,9 @@ const ToDoListItem = ({
                 return
             } else {
                 return (
-                    <span>
+
+                    <span className="listIcon">
+
                         <div>
                             <Button
                                 className="delete"
@@ -90,15 +100,21 @@ const ToDoListItem = ({
                                 <CloseOutlinedIcon />
                             </Button>
                         </div>
-                        <Button onClick={() => onEditClick(list)} className="edit">
+
+                        <Button
+                            onClick={() => onEditClick(list)}
+                            className="edit">
                             <CreateOutlinedIcon />
                         </Button>
-                        <Button className="down">
+                        {/*   <Button className="down">
+
                             <ArrowDownwardOutlinedIcon />
                         </Button>
                         <Button className="up">
                             <ArrowUpwardOutlinedIcon />
-                        </Button>
+
+                        </Button> */}
+
                     </span>
                 )
             }
@@ -112,7 +128,6 @@ const ToDoListItem = ({
     }
 
     // This performs the deletion and hide the Confirmation Box
-
 
 
     const findItem = (item) => {
