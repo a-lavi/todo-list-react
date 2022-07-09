@@ -1,14 +1,12 @@
 html {
     box-sizing: border-box;
     height: 100%;
-  }
+}
 
 body {
     background-color: #ecebebd0;
     font-family: 'Open Sans', sans-serif;
-
 }
-
 
 .container {
     display: block;
@@ -19,7 +17,6 @@ body {
     background-color: white;
     animation: grow 1s;
 }
-
 
 #head {
     margin-top: 15px;
@@ -33,15 +30,12 @@ body {
     display: block;
     width: 370px;
     margin: 0 auto;
-    padding:10px 20px;
-
+    padding: 10px 20px;
 }
-
 
 #completed-tasks {
     margin-bottom: 25px;
 }
-
 
 ul {
     margin: 0;
@@ -63,7 +57,7 @@ button {
     outline: none;
 }
 
-li>button  {
+li > button {
     background: none;
     border: 0;
     color: #888;
@@ -74,15 +68,13 @@ li>button  {
     float: right;
     transition: transform 0.2s;
     outline: none;
-    
 }
-
 
 button:focus {
     outline: 0;
 }
 
-li>button:hover {
+li > button:hover {
     color: #2f2f1e;
     transform: scale(1.4);
 }
@@ -93,17 +85,13 @@ label[for='new-task'] {
     font-weight: 500;
     border-bottom: 1px solid #cbcbb4;
     padding: 20px;
-
-
 }
 
-input[type="text"]:focus {
+input[type='text']:focus {
     color: #333;
 }
 
-
-
-input[type="text"] {
+input[type='text'] {
     margin-bottom: 25px;
 }
 
@@ -111,8 +99,8 @@ input[type="text"] {
     border-color: #b3b3ff;
 }
 
-p>button:hover {
-    color: #0FC57C;
+p > button:hover {
+    color: #0fc57c;
 }
 
 li {
@@ -122,26 +110,26 @@ li {
     margin-bottom: 5px;
 }
 
-li>input[type="checkbox"] {
+li > input[type='checkbox'] {
     margin: 0 10px;
     position: relative;
     top: 15px;
     border-radius: 50%;
 }
 
-li>label {
+li > label {
     font-size: 18px;
     line-height: 40px;
     width: 237px;
     padding: 0 0 0 10px;
 }
 
-li>input[type="text"] {
+li > input[type='text'] {
     width: 250px;
 }
 
-li>.delete:hover {
-    color: #CF2323;
+li > .delete:hover {
+    color: #cf2323;
 }
 
 .completed label {
@@ -149,11 +137,11 @@ li>.delete:hover {
     color: #888;
 }
 
-ul li input[type=text] {
+/* ul li input[type=text] {
     
-}
+} */
 
-ul li.editMode input[type=text] {
+ul li.editMode input[type='text'] {
     display: block;
 }
 
@@ -161,22 +149,18 @@ ul li.editMode label {
     display: none;
 }
 
-
-
 .selected {
     border: 2px solid rgb(255, 255, 255);
 }
-
 
 .todoItem {
     transition: transform 0.3s;
 }
 
 .todoItem:hover {
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 50px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2),
+        0 20px 50px 0 rgba(0, 0, 0, 0.2);
 }
-
-
 
 @keyframes grow {
     0% {
@@ -195,10 +179,13 @@ button:disabled {
     color: gray;
 }
 
-
-
-
 #tasks-body li button:disabled {
     opacity: 0.5;
     background-color: white;
+}
+
+span {
+    line-height: 1.75rem;
+    padding: 6px 6px;
+    text-align: center;
 }
