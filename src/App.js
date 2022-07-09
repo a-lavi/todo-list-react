@@ -4,7 +4,7 @@ import Input from './Input'
 import React, { useState } from 'react'
 
 function App() {
-  let placeHolder = 'Add a new Task!!'
+  
     const [newTask, setNewTask] = useState({
         task: '',
         status: '',
@@ -12,21 +12,23 @@ function App() {
         completed: false,
     })
     const [taskList, setTaskList] = useState([])
-    const [placeholder , setPlaceHolder] = useState('Add a new Task!!!')
+    const [errorMsg , setErroMsg] = useState('')
     //const [editing, setEditing]= useState(false)
 
     const addList = () => {
         if (!newTask.task) {
           
-          setPlaceHolder('Please enter a valid Task!!!')
+          setErroMsg('Please enter a valid Task!!!')
+          setNewTask((prev)=>({...prev, task:''}))
+        
         } else if (
             taskList.map((element) => element.task).indexOf(newTask.task) !== -1
         ) {
             console.log('change')
             setNewTask((prev)=>({...prev, task:''}))
-            setPlaceHolder('There is already a task with this name!!!')
+            setErroMsg('There is already a task with this name!!!')
         } else {
-          
+          setErroMsg('')
             setTaskList((prev) => [...prev, {...newTask}])
             setNewTask((prev)=>({...prev, task:''}))
         }
@@ -39,13 +41,14 @@ function App() {
             <div className="container ">
                 <h2 id="head">To-do List</h2>
                 <Input
-                placeholder={placeholder}
-                setPlaceHolder={setPlaceHolder}
+                errorMsg={errorMsg}
+                setErroMsg={setErroMsg}
                     setNewTask={setNewTask}
                     addList={addList}
                     newTask={newTask}
                     taskList={taskList}
                 />
+                
                 <div id="task-body">
                     <h3 id="doing" className="text-center">
                         My tasks

@@ -1,6 +1,6 @@
 
 
-function Input({ placeholder, setPlaceHolder, setNewTask, addList, newTask, placeHolder }) {
+function Input({ errorMsg,  setErroMsg,setNewTask, addList, newTask, placeHolder }) {
 
     return (
         <div>
@@ -10,10 +10,12 @@ function Input({ placeholder, setPlaceHolder, setNewTask, addList, newTask, plac
                 className="form-control"
                 id="new-task"
                 type="text"
-                placeholder={placeholder}
+                placeholder="Add a new Task!!!"
+                onFocus={()=>{setErroMsg()}}
                 onChange={({ target }) => setNewTask(prev => ({ ...prev, task: target.value }))}
             />
             <center>
+            <div>{errorMsg}</div>
                 <button
                     onClick={addList}
                     type='submit'
