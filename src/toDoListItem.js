@@ -56,12 +56,9 @@ const ToDoListItem = ({
                 console.log('deleeeeeteee')
                 return (
                     <>
-                        <Popup
-                            index={index}
-                            removeTask={removeTask}
-                            popup={popup}
-                            setPopup={setPopup}
-                        />
+
+                        <Popup index={index} removeTask={removeTask} popup={popup} setPopup={setPopup} />
+
                     </>
                 )
             } else {
@@ -93,7 +90,9 @@ const ToDoListItem = ({
                 return
             } else {
                 return (
+
                     <span className="listIcon">
+
                         <div>
                             <Button
                                 className="delete"
@@ -101,17 +100,21 @@ const ToDoListItem = ({
                                 <CloseOutlinedIcon />
                             </Button>
                         </div>
+
                         <Button
                             onClick={() => onEditClick(list)}
                             className="edit">
                             <CreateOutlinedIcon />
                         </Button>
                         {/*   <Button className="down">
+
                             <ArrowDownwardOutlinedIcon />
                         </Button>
                         <Button className="up">
                             <ArrowUpwardOutlinedIcon />
+
                         </Button> */}
+
                     </span>
                 )
             }
@@ -126,6 +129,7 @@ const ToDoListItem = ({
 
     // This performs the deletion and hide the Confirmation Box
 
+
     const findItem = (item) => {
         return taskList.filter((element) => element.task === item)[0]
     }
@@ -134,9 +138,14 @@ const ToDoListItem = ({
         setEditing(false)
     }
     const saveItem = (oldItem, newItem) => {
-        let selectedItem = findItem(oldItem.task)
-        selectedItem.task = newItem
-        //setTaskList(prev => ([...prev, selectedItem]));
+        //let selectedItem = findItem(oldItem.task)
+        //selectedItem.task = newItem
+        setTaskList(prev => (prev.map((element) => {
+            if (element.task!== oldItem.task){
+                return element
+            } 
+            return { ...element,task:newItem }
+        })));
     }
     const onEditClick = () => {
         setEditing(true)
