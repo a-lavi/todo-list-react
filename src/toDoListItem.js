@@ -4,6 +4,7 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined'
 import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined'
 import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined'
 import React, { useState } from 'react'
+import Popup from './Popup'
 const ToDoListItem = ({
     list,
     index,
@@ -18,10 +19,7 @@ const ToDoListItem = ({
     const [editing, setEditing] = useState(false)
     const [updateTask, setUpdateTask] = useState([])
     const [toggle, setToggle] = useState(false)
-    const [popup, setPopup] = useState({
-        show: false, // initial values set to false and null
-        id: null,
-    })
+    const [popup, setPopup] = useState(false)
 
     const toggleComplete = () => {
         setToggle(!toggle)
@@ -52,6 +50,14 @@ const ToDoListItem = ({
                 </form>
             )
         } else {
+            if(popup){
+console.log('deleeeeeteee')
+return(
+    <>
+    <Popup index={index} removeTask={removeTask} popup={popup} setPopup={setPopup}/>
+    </>
+)
+            }else{
             console.log('test2', editing)
             return (
                 <>
@@ -60,6 +66,7 @@ const ToDoListItem = ({
                     </span>
                 </>
             )
+        }
         }
     }
     const renderButtons = ({ list, index }) => {
@@ -71,12 +78,15 @@ const ToDoListItem = ({
                 </span>
             )
         } else {
+            if(popup){
+                return
+            }else{
             return (
                 <span>
                     <div>
                         <Button
                             className="delete"
-                            onClick={() => handleDelete(id)}>
+                            onClick={() => handleDelete()}>
                             <CloseOutlinedIcon />
                         </Button>
                     </div>
@@ -91,39 +101,19 @@ const ToDoListItem = ({
                     </Button>
                 </span>
             )
+            }
         }
     }
 
     // This shows the Confirmation Box
 
-    const handleDelete = (id) => {
-        setPopup({
-            show: true,
-            id,
-        })
+    const handleDelete = () => {
+        setPopup(true)
     }
 
     // This performs the deletion and hide the Confirmation Box
 
-    const handleDeleteTrue = () => {
-        if (popup.show && popup.id) {
-            let filteredData = updateTask.filter((todo) => todo.id !== popup.id)
-            setUpdateTask(filteredData)
-            setPopup({
-                show: false,
-                id: null,
-            })
-        }
-    }
-
-    // This hides the Confirmation Box when user clicks "No"/"Cancel"
-
-    const handleDeleteFalse = () => {
-        setPopup({
-            show: false,
-            id: null,
-        })
-    }
+    
 
     const findItem = (item) => {
         return taskList.filter((element) => element.task === item)[0]
@@ -139,7 +129,7 @@ const ToDoListItem = ({
     }
     const onEditClick = () => {
         setEditing(true)
-        renderName({ list })
+       // renderName({ list })//
     }
     const onCancel = () => {
         setEditing(false)
