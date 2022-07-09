@@ -1,6 +1,7 @@
+import './Style.css'
 function Input({
-    placeholder,
-    setPlaceHolder,
+    errorMsg,
+    setErroMsg,
     setNewTask,
     addList,
     newTask,
@@ -14,12 +15,17 @@ function Input({
                 className="form-control"
                 id="new-task"
                 type="text"
-                placeholder={placeholder}
+                placeholder="Add a new task here"
+                onFocus={() => {
+                    setErroMsg()
+                }}
                 onChange={({ target }) =>
                     setNewTask((prev) => ({ ...prev, task: target.value }))
                 }
             />
             <center>
+                <div style={{ color: 'red' }}>{errorMsg}</div>
+                <br />
                 <button onClick={addList} type="submit" className="add">
                     Add
                 </button>
