@@ -21,8 +21,11 @@ function App() {
         ) {
             console.log('change')
         } else {
-            setTaskList((prev) => [...prev, newTask])
+          
+            setTaskList((prev) => [...prev, {...newTask}])
+            setNewTask((prev)=>({...prev, task:''}))
         }
+       
     }
 
     // console.log(...taskList)
