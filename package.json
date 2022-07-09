@@ -1,6 +1,7 @@
 {
   "name": "todo-list-react",
   "version": "0.1.0",
+  "homepage": "https://a-lavi.github.io/todo-list-react/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
