@@ -1,8 +1,16 @@
 import './Style.css'
 import ToDoList from './ToDoList'
 import Input from './Input'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
+const getLocalStorage= ()=>{
+let list =localStorage.getItem("list")
+if(list){
+  return(list= JSON.parse(localStorage.getItem("list")))
+}else {
+  return[]
+}
+}
 function App() {
   
     const [newTask, setNewTask] = useState({
@@ -11,10 +19,13 @@ function App() {
         isEditing: false,
         completed: false,
     })
-    const [taskList, setTaskList] = useState([])
+    const [taskList, setTaskList] = useState(getLocalStorage())
     const [errorMsg , setErroMsg] = useState('')
     //const [editing, setEditing]= useState(false)
 
+    useEffect(()=>{
+      localStorage.setItem('list',JSON.stringify(taskList))
+    },[taskList])
     const addList = () => {
         if (!newTask.task) {
           

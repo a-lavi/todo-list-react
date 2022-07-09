@@ -50,23 +50,23 @@ const ToDoListItem = ({
                 </form>
             )
         } else {
-            if(popup){
-console.log('deleeeeeteee')
-return(
-    <>
-    <Popup index={index} removeTask={removeTask} popup={popup} setPopup={setPopup}/>
-    </>
-)
-            }else{
-            console.log('test2', editing)
-            return (
-                <>
-                    <span style={itemStyle} onClick={toggleComplete}>
-                        {list.task}
-                    </span>
-                </>
-            )
-        }
+            if (popup) {
+                console.log('deleeeeeteee')
+                return (
+                    <>
+                        <Popup index={index} removeTask={removeTask} popup={popup} setPopup={setPopup} />
+                    </>
+                )
+            } else {
+                console.log('test2', editing)
+                return (
+                    <>
+                        <span style={itemStyle} onClick={toggleComplete}>
+                            {list.task}
+                        </span>
+                    </>
+                )
+            }
         }
     }
     const renderButtons = ({ list, index }) => {
@@ -78,29 +78,29 @@ return(
                 </span>
             )
         } else {
-            if(popup){
+            if (popup) {
                 return
-            }else{
-            return (
-                <span>
-                    <div>
-                        <Button
-                            className="delete"
-                            onClick={() => handleDelete()}>
-                            <CloseOutlinedIcon />
+            } else {
+                return (
+                    <span>
+                        <div>
+                            <Button
+                                className="delete"
+                                onClick={() => handleDelete()}>
+                                <CloseOutlinedIcon />
+                            </Button>
+                        </div>
+                        <Button onClick={() => onEditClick(list)} className="edit">
+                            <CreateOutlinedIcon />
                         </Button>
-                    </div>
-                    <Button onClick={() => onEditClick(list)} className="edit">
-                        <CreateOutlinedIcon />
-                    </Button>
-                    <Button className="down">
-                        <ArrowDownwardOutlinedIcon />
-                    </Button>
-                    <Button className="up">
-                        <ArrowUpwardOutlinedIcon />
-                    </Button>
-                </span>
-            )
+                        <Button className="down">
+                            <ArrowDownwardOutlinedIcon />
+                        </Button>
+                        <Button className="up">
+                            <ArrowUpwardOutlinedIcon />
+                        </Button>
+                    </span>
+                )
             }
         }
     }
@@ -113,7 +113,7 @@ return(
 
     // This performs the deletion and hide the Confirmation Box
 
-    
+
 
     const findItem = (item) => {
         return taskList.filter((element) => element.task === item)[0]
@@ -123,13 +123,18 @@ return(
         setEditing(false)
     }
     const saveItem = (oldItem, newItem) => {
-        let selectedItem = findItem(oldItem.task)
-        selectedItem.task = newItem
-        //setTaskList(prev => ([...prev, selectedItem]));
+        //let selectedItem = findItem(oldItem.task)
+        //selectedItem.task = newItem
+        setTaskList(prev => (prev.map((element) => {
+            if (element.task!== oldItem.task){
+                return element
+            } 
+            return { ...element,task:newItem }
+        })));
     }
     const onEditClick = () => {
         setEditing(true)
-       // renderName({ list })//
+        // renderName({ list })//
     }
     const onCancel = () => {
         setEditing(false)
