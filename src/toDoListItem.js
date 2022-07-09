@@ -3,7 +3,9 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined'
 import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined'
 import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined'
+import CheckIcon from '@mui/icons-material/Check'
 import React, { useState } from 'react'
+import './Style.css'
 import Popup from './Popup'
 const ToDoListItem = ({
     list,
@@ -50,57 +52,68 @@ const ToDoListItem = ({
                 </form>
             )
         } else {
-            if(popup){
-console.log('deleeeeeteee')
-return(
-    <>
-    <Popup index={index} removeTask={removeTask} popup={popup} setPopup={setPopup}/>
-    </>
-)
-            }else{
-            console.log('test2', editing)
-            return (
-                <>
-                    <span style={itemStyle} onClick={toggleComplete}>
-                        {list.task}
-                    </span>
-                </>
-            )
-        }
+            if (popup) {
+                console.log('deleeeeeteee')
+                return (
+                    <>
+                        <Popup
+                            index={index}
+                            removeTask={removeTask}
+                            popup={popup}
+                            setPopup={setPopup}
+                        />
+                    </>
+                )
+            } else {
+                console.log('test2', editing)
+                return (
+                    <>
+                        <span style={itemStyle} onClick={toggleComplete}>
+                            {list.task}
+                        </span>
+                    </>
+                )
+            }
         }
     }
     const renderButtons = ({ list, index }) => {
         if (editing) {
             return (
                 <span>
-                    <button onClick={onSaveClick}>Save</button>
-                    <button onClick={onCancel}>Cancel</button>
+                    <button className="editIcon" onClick={onSaveClick}>
+                        <CheckIcon />
+                    </button>
+                    <button className="editIcon" onClick={onCancel}>
+                        <CloseOutlinedIcon />
+                    </button>
                 </span>
             )
         } else {
-            if(popup){
+            if (popup) {
                 return
-            }else{
-            return (
-                <span>
-                    <div>
+            } else {
+                return (
+                    <span className="listIcon">
+                        <div>
+                            <Button
+                                className="delete"
+                                onClick={() => handleDelete()}>
+                                <CloseOutlinedIcon />
+                            </Button>
+                        </div>
                         <Button
-                            className="delete"
-                            onClick={() => handleDelete()}>
-                            <CloseOutlinedIcon />
+                            onClick={() => onEditClick(list)}
+                            className="edit">
+                            <CreateOutlinedIcon />
                         </Button>
-                    </div>
-                    <Button onClick={() => onEditClick(list)} className="edit">
-                        <CreateOutlinedIcon />
-                    </Button>
-                    <Button className="down">
-                        <ArrowDownwardOutlinedIcon />
-                    </Button>
-                    <Button className="up">
-                        <ArrowUpwardOutlinedIcon />
-                    </Button>
-                </span>
-            )
+                        {/*   <Button className="down">
+                            <ArrowDownwardOutlinedIcon />
+                        </Button>
+                        <Button className="up">
+                            <ArrowUpwardOutlinedIcon />
+                        </Button> */}
+                    </span>
+                )
             }
         }
     }
@@ -112,8 +125,6 @@ return(
     }
 
     // This performs the deletion and hide the Confirmation Box
-
-    
 
     const findItem = (item) => {
         return taskList.filter((element) => element.task === item)[0]
@@ -129,7 +140,7 @@ return(
     }
     const onEditClick = () => {
         setEditing(true)
-       // renderName({ list })//
+        // renderName({ list })//
     }
     const onCancel = () => {
         setEditing(false)

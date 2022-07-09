@@ -68,6 +68,7 @@ li > button {
     float: right;
     transition: transform 0.2s;
     outline: none;
+    float: right;
 }
 
 button:focus {
@@ -77,6 +78,22 @@ button:focus {
 li > button:hover {
     color: #2f2f1e;
     transform: scale(1.4);
+}
+
+.modal_buttonCancel,
+.modal_buttonDel,
+.editIcon {
+    background: none;
+    border: 0;
+    color: rgba(39, 86, 216, 0.805);
+    font-size: 15px;
+    width: 40px;
+    margin: 10px 5px;
+    cursor: pointer;
+    float: right;
+    transition: transform 0.2s;
+    outline: none;
+    float: right;
 }
 
 h3,

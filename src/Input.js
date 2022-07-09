@@ -1,7 +1,4 @@
-
-
 function Input({ setNewTask, addList, newTask }) {
-    
     return (
         <div>
             <input
@@ -10,21 +7,16 @@ function Input({ setNewTask, addList, newTask }) {
                 id="new-task"
                 type="text"
                 placeholder="Add a new task"
-                onChange={({ target }) => setNewTask(prev => ({ ...prev, task: target.value }))}
+                onChange={({ target }) =>
+                    setNewTask((prev) => ({ ...prev, task: target.value }))
+                }
             />
             <center>
-                <button
-                 onClick={addList}
-                  type='submit'
-                   className='add'
-                   >
+                <button onClick={addList} type="submit" className="add">
                     Add
-                   </button>
-                  
-                </center>
-                
+                </button>
+            </center>
         </div>
     )
-
 }
 export default Input
