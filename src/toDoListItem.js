@@ -1,8 +1,7 @@
 import Button from '@mui/material/Button'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined'
-import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined'
-import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined'
+
 import CheckIcon from '@mui/icons-material/Check'
 import React, { useState } from 'react'
 import './Style.css'
